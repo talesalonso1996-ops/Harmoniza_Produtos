@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 import hp_propor
-from hp_comum import dir_ondas, grava_json, grava_texto, hoje, le_json
+from hp_comum import dir_ondas, grava_json, grava_texto, hoje, le_json, slug
 
 AQUI = Path(__file__).parent
 
@@ -49,7 +49,7 @@ def main() -> None:
     n1s = {int(x) for x in a.n1.split(",") if x.strip()} if not a.so_cynthia else {-99}
     folhas = {x.strip() for x in a.cynthia_folhas.split(",") if x.strip()}
     extras = le_json(Path(a.extras))["propostas"] if a.extras else []
-    onda = f"{hoje()}_claude-v3_{a.escopo}"
+    onda = f"{hoje()}_claude-v3_{slug(a.escopo)}"
     P = hp_propor.propor(onda, n1s, extras, folhas, 40)
     if not P["propostas"]:
         print(f"{onda}: nenhuma proposta; onda não aberta.")
