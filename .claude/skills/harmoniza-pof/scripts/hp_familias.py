@@ -122,6 +122,19 @@ def contexto(est: dict, grupos: list[str], celulas_extra: list[str], k: int, n_s
             rows.append([r.Codigo, r.Quadro_H, r.grupos, r.n_itens, txt])
         out.append(f"### {ano} ({len(sub)} células)\n" + md_tab(["Codigo", "Quadro", "grupo", "n", "itens"], rows))
 
+    # classificação oficial do IBGE (ADR 0006)
+    try:
+        import hp_ibge
+        an = hp_ibge.anota(alvo[alvo["Ano"].isin(["2008", "2017"])])
+        an = an[an["grupo_ibge"] != ""]
+        if len(an):
+            rows = [[r.Ano, r.Codigo, r.grupos, corta(nomes.get(r.grupos, ""), 35), r.grupo_ibge,
+                     corta(r.descricao_ibge, 60)] for r in an.itertuples()]
+            out += ["## Classificação oficial do IBGE (tradutores 2008 e 2017; evidência nível 4)",
+                    md_tab(["Ano", "Codigo", "grupo", "nome", "IBGE: grupo", "IBGE: linha"], rows)]
+    except Exception as e:  # tradutor ausente não impede o contexto
+        out.append(f"_Tradutor do IBGE indisponível: {e}_")
+
     # vizinhos de código
     viz_rows = []
     alvo_cels = set(alvo["cel"])
