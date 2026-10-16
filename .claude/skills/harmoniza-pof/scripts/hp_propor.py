@@ -64,9 +64,11 @@ def propor(onda: str, n1s: set[int], extras: list[dict], folhas_cyn: set[str], m
     def cyn_confirma(cel, para):
         return [r for r in cyn_por_cel.get(cel, []) if r.para == para]
     o["cyn"] = [cyn_confirma(c, p) for c, p in zip(o["cel"], o["para"])]
-    o["classe"] = ["aplicar" if (int(n) >= 3 and i != "nao") or (int(n) == 2 and (i == "sim" or len(cy) > 0))
-                   else ("ibge_contra" if i == "nao" else "revisar")
-                   for n, i, cy in zip(o["n_outros"], o["ibge_concorda"].fillna(""), o["cyn"])]
+    # ADR 0005; mudar de domínio (consumo/outras/rendimentos/inventário) só com o IBGE confirmando
+    o["classe"] = ["ibge_contra" if i == "nao"
+                   else ("dominio" if md and i != "sim"
+                         else ("aplicar" if (int(n) >= 3) or (int(n) == 2 and (i == "sim" or len(cy) > 0)) else "revisar"))
+                   for n, i, cy, md in zip(o["n_outros"], o["ibge_concorda"].fillna(""), o["cyn"], o["muda_dominio"])]
     props, k = [], 0
     def novo_id():
         nonlocal k
@@ -100,6 +102,7 @@ def propor(onda: str, n1s: set[int], extras: list[dict], folhas_cyn: set[str], m
     # REVISAR: 2 edições sem segunda fonte / IBGE contra
     for classe, titulo_c, motivo_c in [
         ("revisar", "só 2 edições", "Os mesmos produtos estão em {para} nas duas outras edições em que aparecem; em {ano} estão em {de}. Duas edições contra uma, sem segunda fonte (IBGE neutro ou ausente, sem revisão manual): pela ADR 0005 não é óbvio. Recomendação da IA: mover, salvo razão de conceito."),
+        ("dominio", "muda de conceito", "Os mesmos nomes de produto estão em {para} nas outras edições, mas a célula está em {de}, de outro domínio (consumo, outras despesas, rendimentos ou inventário). Mesmo nome não garante mesma despesa (ex.: item de inventário de bens duráveis × compra; 'empregado' como rendimento × serviço doméstico). Sem confirmação do IBGE, a decisão é humana."),
         ("ibge_contra", "IBGE contra", "As outras edições põem os mesmos produtos em {para}, mas o tradutor do IBGE confirma o grupo atual ({de}) em {ano}. Fontes discordantes (CONSTITUICAO, hierarquia de evidência): decidir qual convenção vale para a série.")]:
         for (de, para), sub in o[o["classe"] == classe].groupby(["de", "para"]):
             cels = list(sub["cel"])

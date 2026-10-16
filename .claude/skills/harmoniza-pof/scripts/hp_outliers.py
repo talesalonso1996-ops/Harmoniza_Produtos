@@ -19,6 +19,7 @@ do tradutor oficial, 2008/2017), ibge_concorda (destino compatível com o grande
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -97,12 +98,15 @@ def detecta(est: dict, min_outros: int = 2) -> pd.DataFrame:
     o = pd.DataFrame(out)
     if o.empty:
         return o
-    # evidência do IBGE (2008/2017)
+    # evidência do IBGE (2008/2017): grande grupo e, fora de alimentos, a linha fina típica de cada grupo
     cel = celulas_df(dep)
-    an = hp_ibge.anota(cel[cel["cel"].isin(o["cel"])])
-    an = an.set_index("cel")
+    todas = hp_ibge.anota(cel[cel["Ano"].isin(["2008", "2017"])])
+    com = todas[(todas["descricao_ibge"] != "") & (todas["grupo_ibge"].map(hp_ibge.norm_grupo_ibge) != "alimentacao")]
+    tipica = com.groupby(["Ano", "grupos"])["descricao_ibge"].agg(lambda s: s.value_counts().index[0]).to_dict()
+    an = todas.set_index("cel")
     o["ibge"] = o["cel"].map(lambda c: f"{an.loc[c, 'grupo_ibge']} > {an.loc[c, 'descricao_ibge']}"
                              if c in an.index and an.loc[c, "grupo_ibge"] else "")
+
     def concorda(r):
         if r["cel"] not in an.index or not an.loc[r["cel"], "grupo_ibge"]:
             return ""
@@ -113,8 +117,22 @@ def detecta(est: dict, min_outros: int = 2) -> pd.DataFrame:
             return "sim"
         if ib in ed and ib not in ep:
             return "nao"
+        # mesmo grande grupo: decide pela linha fina típica do grupo de origem e do de destino
+        lin = an.loc[r["cel"], "descricao_ibge"]
+        if ib != "alimentacao" and lin:
+            if lin == tipica.get((r["ano"], r["de"])) and lin != tipica.get((r["ano"], r["para"])):
+                return "nao"
+            if lin == tipica.get((r["ano"], r["para"])) and lin != tipica.get((r["ano"], r["de"])):
+                return "sim"
         return "neutro"
     o["ibge_concorda"] = o.apply(concorda, axis=1)
+    # domínio: consumo (1-40), outras despesas (41-43), rendimentos (44-47), inventário (88). Mudar de domínio
+    # é mudar de conceito (mesmo nome, outra despesa): só com o IBGE confirmando.
+    def dominio(n1):
+        m = re.match(r"\s*(\d+)", n1 or "")
+        n = int(m.group(1)) if m else -1
+        return "consumo" if 1 <= n <= 40 else "outras" if 41 <= n <= 43 else "rend" if 44 <= n <= 47 else "inv" if n == 88 else "?"
+    o["muda_dominio"] = [dominio(a) != dominio(b) for a, b in zip(o["n1_de"], o["n1_para"])]
     return o.sort_values(["n1_para", "para", "ano", "codigo"]).reset_index(drop=True)
 
 
