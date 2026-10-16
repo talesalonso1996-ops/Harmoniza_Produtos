@@ -1,10 +1,10 @@
 {
   "gerado_em": "2026-10-16",
-  "commit": "95b2939 2026-10-16 onda 2026-10-16_claude-v3_vazios-por-grupo: diagnóstico dos grupos com ano vazio",
-  "folhas": 320,
+  "commit": "a9d772b 2026-10-16 v3: consolidação, DOCUMENTACAO, dados do explorador e resumo V3.md",
+  "folhas": 321,
   "produtos": 48220,
   "celulas": 20145,
-  "decisoes_aplicadas": 284,
+  "decisoes_aplicadas": 1079,
   "ondas": [
     {
       "onda": "2026-09-11_arthurwelle_base",
@@ -110,6 +110,61 @@
       "onda": "2026-10-16_claude-v3_vestuario-transporte-higiene-saude",
       "tipo": "familia",
       "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_1995-copia-e-antigas",
+      "tipo": "pendencia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_alimentos-series",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_alimentos-vazios-e-grupos",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_comida-fora-de-casa",
+      "tipo": "taxonomia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_cynthia-habitacao",
+      "tipo": "pendencia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_educacao",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_habitacao-e-reforma",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_nao-consumo-e-alugueis",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_recreacao-e-telefonia",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_vazios-finais",
+      "tipo": "familia",
+      "autor": "claude-v4"
+    },
+    {
+      "onda": "2026-10-16_claude-v4_vestuario-transporte-saude",
+      "tipo": "familia",
+      "autor": "claude-v4"
     }
   ]
 }

@@ -212,7 +212,7 @@ Cod_harmo,nome,nivel1,nivel2,status,criado_em,extinto_em,substituido_por,nome_or
 15304,Café em grão,15. Bebidas e infusões,15.3 Cafés,ativo,base,,,Café em grão
 15401,Chá-mate,15. Bebidas e infusões,15.4 Chás,ativo,base,,,xx.x.x Chá-mate
 15402,Outros; Chá preto,15. Bebidas e infusões,15.4 Chás,ativo,base,,,xx.x.x Outrosxx.x.x Chá preto
-16016,Outros,,,ativo,base,,,x.x.x Outros
+16016,Outros,,,extinto,base,2026-10-16_claude-v4_alimentos-vazios-e-grupos,01199,x.x.x Outros
 16101,Frango assado ou defumado,16. Outros produtos,16.1 Outros produtos,ativo,base,,,xx.x.x Frango assado ou defumadoxx.x.x Frango assado ou defumado
 16102,Massa; Massa preparada,16. Outros produtos,16.1 Outros produtos,ativo,base,,,xx.x.x Massaxx.x.x Massa preparada
 16103,Outros produtos,16. Outros produtos,16.1 Outros produtos,ativo,base,,,xx.x.x Outros produtos
@@ -225,6 +225,7 @@ Cod_harmo,nome,nivel1,nivel2,status,criado_em,extinto_em,substituido_por,nome_or
 16110,Tomate em lata,16. Outros produtos,16.1 Outros produtos,ativo,base,,,Tomate em lata
 16111,Palmito em conserva,16. Outros produtos,16.1 Outros produtos,ativo,base,,,Palmito em conserva
 16112,Cogumelo em conserva,16. Outros produtos,16.1 Outros produtos,ativo,base,,,Cogumelo em conserva
+16201,Alimentação fora do domicílio,16. Outros produtos,16.2 Alimentação fora do domicílio,ativo,2026-10-16_claude-v4_comida-fora-de-casa,,,
 31001,Aluguel,31. Servicos_e_taxas,Servicos_e_taxas,ativo,base,,,Aluguel
 31002,Energia eletrica,31. Servicos_e_taxas,Servicos_e_taxas,ativo,base,,,Energia_eletrica
 31003,Telefonia,31. Servicos_e_taxas,Servicos_e_taxas,ativo,base,,,Telefonia
@@ -247,7 +248,7 @@ Cod_harmo,nome,nivel1,nivel2,status,criado_em,extinto_em,substituido_por,nome_or
 34003,Alcool para veiculo proprio,34. Transporte,Transporte,ativo,base,,,Alcool_para_veiculo_proprio
 34004,Manutencao de veiculo proprio,34. Transporte,Transporte,ativo,base,,,Manutencao_de_veiculo_proprio
 34005,Aquisicao de veiculos,34. Transporte,Transporte,ativo,base,,,Aquisicao_de_veiculos
-34006,Viagens,34. Transporte,Transporte,ativo,base,,,Viagens
+34006,Viagens,34. Transporte,Transporte,extinto,base,2026-10-16_claude-v4_nao-consumo-e-alugueis,,Viagens
 34007,Outros transporte,34. Transporte,Transporte,ativo,base,,,Outros_transporte
 34008,Bicicleta,34. Transporte,Transporte,ativo,base,,,Bicicleta
 34009,Estacionamento e vaga cativa de estacionamento,34. Transporte,Transporte,ativo,base,,,Estacionamento e vaga cativa de estacionamento
