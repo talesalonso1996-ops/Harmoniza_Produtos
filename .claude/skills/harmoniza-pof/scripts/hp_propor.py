@@ -138,7 +138,7 @@ def propor(onda: str, n1s: set[int], extras: list[dict], folhas_cyn: set[str], m
                     "motivo_ia": "As células da ação já estão no destino proposto pela revisão manual (a planilha do Drive estava defasada). Nada a mudar.",
                     "conflito": None, "impacto": "nenhum", "pendencias": []})
                 continue
-            cels_fora = [c for c in cels if c not in usados]
+            cels_fora = [c for c in cels if c not in usados and c not in ja]
             motivo = {"Outlier pontual": "A revisão manual aponta outlier pontual, mas o detector não o confirmou: a célula tem itens sem histórico ou de outro conceito, ou o histórico não é unânime (R1). Precisa olhar a célula inteira.",
                       "Maturação de taxonomia": "A revisão manual propõe adotar a classificação mais recente (taxonomia que amadureceu). É escolha de critério para a série, não erro: decisão humana.",
                       "Resíduo/analogia": "A revisão manual move por analogia com itens parecidos, sem o mesmo produto em outras edições. Evidência de nível 5 (descrição): decisão humana.",
@@ -148,7 +148,7 @@ def propor(onda: str, n1s: set[int], extras: list[dict], folhas_cyn: set[str], m
                 "id": novo_id(), "tipo": "REVISAR",
                 "titulo": f"Cynthia folha {folha} #{n} ({r0['tipo'] or 'sem tipo'}): {r0['de']} → {r0['para']}",
                 "movimentos": [], "celulas_analisadas": cels_fora, "confianca": "MEDIA", "regras_ref": ["R6", "R7"],
-                "evidencia": f"Ação: {acoes_txt.get((folha, n), '')[:200]}. Itens: {itens}. Células achadas no estado atual: {', '.join(cels) or 'nenhuma (grafia diferente)'}. Texto da revisão: {textos.get((folha, n), '')[:700]}",
+                "evidencia": f"Ação: {acoes_txt.get((folha, n), '')[:200]}. Itens: {itens}. Células achadas no estado atual: {', '.join(cels) or 'nenhuma (grafia diferente)'}; já no destino: {', '.join(ja) or 'nenhuma'}. Texto da revisão: {textos.get((folha, n), '')[:700]}",
                 "motivo_ia": motivo, "conflito": None,
                 "impacto": f"Se aceito: {len(cels_fora)} célula(s) de {r0['de']} para {r0['para']}.", "pendencias": []})
     for e in extras:
