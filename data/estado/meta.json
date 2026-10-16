@@ -1,10 +1,10 @@
 {
-  "gerado_em": "2026-09-11",
-  "commit": "34ccdb4 2026-09-11 onda cirurgia: fecha com 23 decisões aceitas",
+  "gerado_em": "2026-10-16",
+  "commit": "95b2939 2026-10-16 onda 2026-10-16_claude-v3_vazios-por-grupo: diagnóstico dos grupos com ano vazio",
   "folhas": 320,
   "produtos": 48220,
   "celulas": 20145,
-  "decisoes_aplicadas": 42,
+  "decisoes_aplicadas": 284,
   "ondas": [
     {
       "onda": "2026-09-11_arthurwelle_base",
@@ -15,6 +15,101 @@
       "onda": "2026-09-11_arthurwelle_cirurgia",
       "tipo": "familia",
       "autor": "arthurwelle"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_1995-copia-de-1987",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_2017-quadros-deslocados",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_alimentos-bebidas-outros",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_alimentos-cereais-hortalicas-frutas",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_alimentos-cocos-farinhas-panif-carnes",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_alimentos-visceras-a-oleos",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_comida-fora-de-casa",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_cynthia-folha-32",
+      "tipo": "pendencia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_cynthia-folha-37",
+      "tipo": "pendencia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_cynthia-folha-38",
+      "tipo": "pendencia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_cynthia-folha-400006",
+      "tipo": "pendencia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_educacao-despesas-diversas",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_habitacao-servicos",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_nao-consumo",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_pendencias-formulario",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_pendencias-validacao-e-criar",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_recreacao-cultura",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_vazios-por-grupo",
+      "tipo": "familia",
+      "autor": "claude-v3"
+    },
+    {
+      "onda": "2026-10-16_claude-v3_vestuario-transporte-higiene-saude",
+      "tipo": "familia",
+      "autor": "claude-v3"
     }
   ]
 }
