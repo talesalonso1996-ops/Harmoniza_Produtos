@@ -54,6 +54,10 @@ def propor(onda: str, n1s: set[int], extras: list[dict], folhas_cyn: set[str], m
     est = carrega_estado()
     nomes = dict(zip(est["grupos"]["Cod_harmo"], est["grupos"]["nome"]))
     o = hp_outliers.detecta(est)
+    if o.empty:
+        o = pd.DataFrame(columns=["cel", "ano", "codigo", "quadro", "de", "para", "n1_de", "n1_para", "conceito",
+                                  "n_itens", "n_hist", "n_outros", "anos_x", "itens", "ibge", "ibge_concorda",
+                                  "muda_dominio"])
     o = o[o["n1_para"].map(n1_num).isin(n1s) & (o["conceito"] != "fora")].copy()
     cyn = carrega_cynthia()
     cyn_por_cel = defaultdict(list)
